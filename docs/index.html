@@ -7,7 +7,45 @@
       padding-right: 100px;  
       padding-bottom: 0.25in;  
       padding-left: 100px;  
-    }  
+    }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    html, body {
+      font-family: "ff-meta-web-pro", sans-serif;
+      text-rendering: optimizeLegibility;
+      font-size: 100%;
+      line-height: 26px;
+      background: #f6efe5;
+      background-size: 60%;
+      color: #0d2c40;
+    }
+    a {
+      color: #0d2c40;
+      text-decoration: none;
+      border-bottom: 1px solid #0d2c40;
+      -webkit-transition: all 0.2s ease-out;
+      -moz-transition: all 0.2s ease-out;
+      -o-transition: all 0.2s ease-out;
+      -ms-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+    }
+    a:hover {
+      color: rgba(0, 0, 0, 0.4);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    }
 </style> 
 <title>CS 284a: Final Project Proposal</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -36,16 +74,38 @@
 <h2>Goals and Deliverables</h2>
 
 <h3>What We Plan to Deliver</h3>
+<p>
+  We plan to create a program that accepts as input point cloud data and outputs a complete mesh. The point cloud data will be missing 
+  a chunk of the desired object, but the resulting mesh should have this filled in.
+</p>
 
 <h4>What images will we create?</h4>
+<p>
+  Our results will be images with the complete mesh compared to the original point cloud. In this comparison, we will highlight how the 
+  initial data lacked a significant part of the object and that our program was able to create the mesh successfully.
+</p>
 
 <h4>How will we measure the success of our system?</h4>
+<p>
+  Our success metric is very simple: either the mesh is complete or it is not. We will evaluate our performance using the binary metric, 
+  and intentionally choose input data where the desired result is obvious. For example, we will test on a chair that has legs missing, or 
+  a bottle with a missing top.
+</p>
 
 <h4>What questions will our analysis answer?</h4>
+<p>
+  Our analysis will explain why existing mesh generation methods fail in this edge case, and describe how we use GANs to successfully
+  resolve this problem. We will connect our results with other papers that have worked in a similar space, and describe how the methods 
+  could be combined to create a stronger meth generation tool.
+</p>
 
 <h3>What We Hope to Deliver</h3>
 
 <h4>Areas to go further...</h4>
+<p>
+  If time permits, we will expand our project to handle more objects by peroforming a more comprehensive training of our model. In an ideal 
+  mesh generation tool, we would be able to fill in missing chunks of objects even if those objects differ significantly from the training set.
+</p>
 
 <h2>Schedule</h2>
 
