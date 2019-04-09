@@ -57,7 +57,7 @@
 <h1>CS 284a: Final Project Proposal</h1>
 </center>
 <h2>Title</h2>
-<p>Filling Holes in Point Clouds with GANs</p>
+<p>Filling Incomplete Sections in Point Clouds with GANs</p>
 
 <h2>Team</h2>
 <p>Kavi Mehta, 25040386</p> <p>Jack Sullivan, 25195800</p> <p>David Tseng, 25291067</p>
@@ -65,31 +65,31 @@
 <h2>Summary</h2>
 <p>
 
-We are trying to solve the problem of filling in incomplete segments of 3D point clouds using machine learning (GANs) in order to produce more accurate and high quality polygon meshes. Existing solutions range from filling in holes in point clouds using heuristic methods to using GANs to produce an entire estimate of a point cloud given filled in ground truth point clouds. We propose to solve the adjacent problem of filling in large incomplete segments (such as an entire chair leg) with similar machine learning tools that have been used t osolve the uniformly sparse point cloud case: GANs.
+We are trying to solve the problem of filling in incomplete segments of 3D point clouds using machine learning (GANs) in order to produce more accurate and high quality polygon meshes. We propose to solve the adjacent problem of filling in large incomplete segments (such as an entire chair leg) with similar machine learning tools that have been used to solve the incomplete images problem: GANs.
 
-In terms of what we plan to deliver, we plan on focusing on and optimizting for one class of objects (such as chairs) and focus on expanding to multiple classes of objects if time permits. The images we will create are the incomplete point clouds, the reconstructed point clouds, and the polygon meshes generated from both kinds of point clouds. To evaluate success, we would qualitatively compare the completeness and quality of the polygon meshes of the incomplete point cloud objects vs the reconstructed point cloud objects. The images we will create are the reconstructed point clouds and the polygon meshes generated from the point clouds. 
-
-     
 </p>
 
 <h2>Problem Description</h2>
 <p>
-Point clouds have become increasingly popular data structures for representing 3D geometric objects and are used by many applications such as 3d scanners. These point clouds can then be converted into graphical polygon meshes that can be further modified. The problem is that the hardware that calculates the initial point cloud may be faulty, leading to more sparse point clouds or point clouds with missing segments all together. These incomplete point clouds will then propogate to produce inaccurate polygon meshes. In addition, we need an automated way of filling in the gaps of these point clouds. There have been recent solutions using machine learning and GANs to resolve uniformly sparse point clouds, but the problem of missing segments (such as a whole leg of a chair missing) remains an open, unsolved problem.
-</p>
+Point clouds have become increasingly popular data structures for representing 3D geometric objects and are used by many applications such as 3D scanners. These point clouds can then be converted into graphical polygon meshes that can be further modified. The problem is that the hardware that calculates the initial point cloud may be faulty, leading to more sparse point clouds or point clouds with missing segments all together. These incomplete point clouds will then propagate to produce inaccurate polygon meshes. In addition, we need an automated way of filling in the gaps of these point clouds. There have been recent solutions using heuristic-based methods and deep learning to resolve uniformly sparse point clouds, but the problem of missing segments (such as a whole leg of a chair missing) using GANs remains an open, unsolved problem. To solve this problem, we will take an incomplete point cloud, pass it through a pre-trained encoder network, then a generator network, and finally a pre-trained decoder network. The discriminator will be used to distinguish between the output of the generator and the output of a complete point cloud encoded via the pre-trained encoder network. 
 
+<br>
+</p>
 
 <h2>Goals and Deliverables</h2>
 
 <h3>What We Plan to Deliver</h3>
+
+<h4>Overview</h4>
 <p>
-  We plan to create a program that accepts as input point cloud data and outputs a complete mesh. The point cloud data will be missing 
-  a chunk of the desired object, but the resulting mesh should have this filled in.
+We plan to create a pipeline that accepts as input point cloud data and outputs a complete mesh. The point cloud data will have a missing chunk of the desired object, but the resulting mesh should have this filled in. Specifically, this involves two discrete steps: 1) training a GAN and using its generator to determine the missing chunk and add the necessary points to resolve it, and 2) using a point cloud to mesh converter. We aim to focus on step 1 and use an existing implementation of step 2 since that problem has already been thoroughly covered.
+
+In terms of what we plan to deliver, we plan on focusing on and optimizing for one class of objects (such as chairs) and focus on expanding to multiple classes of objects if time permits. The images we will create are the incomplete point clouds, the reconstructed point clouds, and the polygon meshes generated from both kinds of point clouds. To evaluate success, we would qualitatively compare the completeness and quality of the polygon meshes of the incomplete point cloud objects vs the reconstructed point cloud objects. The images we will create are the reconstructed point clouds and the polygon meshes generated from the point clouds.
 </p>
 
 <h4>What images will we create?</h4>
 <p>
-  Our results will be images with the complete mesh compared to the original point cloud. In this comparison, we will highlight how the 
-  initial data lacked a significant part of the object and that our program was able to create the mesh successfully.
+  Our results will be images with the complete mesh compared to the original point cloud. In this comparison, we will highlight how the initial data lacked a significant part of the object and that our program was able to create the mesh successfully. Intermediate objects include the complete (filled in) point cloud and the mesh based on the incomplete point cloud.
 </p>
 
 <h4>How will we measure the success of our system?</h4>
@@ -110,7 +110,7 @@ Point clouds have become increasingly popular data structures for representing 3
 
 <h4>Areas to go further...</h4>
 <p>
-  If time permits, we will expand our project to handle more objects by peroforming a more comprehensive training of our model. In an ideal 
+  If time permits, we will expand our project to handle more objects by performing a more comprehensive training of our model. In an ideal 
   mesh generation tool, we would be able to fill in missing chunks of objects even if those objects differ significantly from the training set.
 </p>
 
@@ -132,32 +132,32 @@ Point clouds have become increasingly popular data structures for representing 3
   <tr>
     <td>April 16</td>
     <td>Week 2</td>
-    <td>GOAL</td>
-    <td>DETAILS</td>
+    <td>Shape Net Baseline</td>
+    <td>download shape net images, remove chunks, visualize the point clouds and save example images; try using point cloud to mesh converter MeshLab</td>
   </tr>
   <tr>
     <td>April 23</td>
     <td>Week 3</td>
-    <td>GOAL</td>
-    <td>DETAILS</td>
+    <td>GANs baseline trained</td>
+    <td>set up GANs architecture and train it on our chosen point clouds; iterate on model</td>
   </tr>
   <tr>
     <td>April 30</td>
     <td>Week 4</td>
     <td>Milestone</td>
-    <td>DETAILS</td>
+    <td>run some experiments using point clouds and GANs model; complete milestone according to spec</td>
   </tr>
   <tr>
     <td>May 9</td>
     <td>Week 5</td>
     <td>Final Presentations</td>
-    <td>DETAILS</td>
+    <td>run more experiments and curate images of completed examples; aggregate evaluation metrics; create presentation deck</td>
   </tr>
   <tr>
     <td>May 14</td>
     <td>Week 6</td>
     <td>Final Deliverables</td>
-    <td>DETAILS</td>
+    <td>write final paper according to spec</td>
   </tr>
 </table>
 
@@ -176,3 +176,4 @@ We will be using Numpy arrays to represent the point clouds, and Tensorflow to c
 <a href="/">2D Image Reconstruction using GANs</a> -->
 
 </body>
+
