@@ -26,12 +26,19 @@
 
 <h2>Summary</h2>
 <p>
-    We are trying to solve the problem of creating complete meshes when there are holes in the point cloud data. There are existing
-    projects that accomplish this using heuristic methods, as well as methods that reconstruct incomplete 2D images using GANs. We propose a 
-    combination of these ideas: using GANs to fill holes in point clouds in order to reconstruct a complete mesh.
+
+We are trying to solve the problem of filling in incomplete segments of 3D point clouds using machine learning (GANs) in order to produce more accurate and high quality polygon meshes. Existing solutions range from filling in holes in point clouds using heuristic methods to using GANs to produce an entire estimate of a point cloud given filled in ground truth point clouds. We propose to solve the adjacent problem of filling in large incomplete segments (such as an entire chair leg) with similar machine learning tools that have been used t osolve the uniformly sparse point cloud case: GANs.
+
+In terms of what we plan to deliver, we plan on focusing on and optimizting for one class of objects (such as chairs) and focus on expanding to multiple classes of objects if time permits. The images we will create are the incomplete point clouds, the reconstructed point clouds, and the polygon meshes generated from both kinds of point clouds. To evaluate success, we would qualitatively compare the completeness and quality of the polygon meshes of the incomplete point cloud objects vs the reconstructed point cloud objects. The images we will create are the reconstructed point clouds and the polygon meshes generated from the point clouds. 
+
+     
 </p>
 
 <h2>Problem Description</h2>
+<p>
+Point clouds have become increasingly popular data structures for representing 3D geometric objects and are used by many applications such as 3d scanners. These point clouds can then be converted into graphical polygon meshes that can be further modified. The problem is that the hardware that calculates the initial point cloud may be faulty, leading to more sparse point clouds or point clouds with missing segments all together. These incomplete point clouds will then propogate to produce inaccurate polygon meshes. In addition, we need an automated way of filling in the gaps of these point clouds. There have been recent solutions using machine learning and GANs to resolve uniformly sparse point clouds, but the problem of missing segments (such as a whole leg of a chair missing) remains an open, unsolved problem.
+</p>
+
 
 <h2>Goals and Deliverables</h2>
 
