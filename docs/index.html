@@ -7,7 +7,45 @@
       padding-right: 100px;  
       padding-bottom: 0.25in;  
       padding-left: 100px;  
-    }  
+    }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    html, body {
+      font-family: "ff-meta-web-pro", sans-serif;
+      text-rendering: optimizeLegibility;
+      font-size: 100%;
+      line-height: 26px;
+      background: #f6efe5;
+      background-size: 60%;
+      color: #0d2c40;
+    }
+    a {
+      color: #0d2c40;
+      text-decoration: none;
+      border-bottom: 1px solid #0d2c40;
+      -webkit-transition: all 0.2s ease-out;
+      -moz-transition: all 0.2s ease-out;
+      -o-transition: all 0.2s ease-out;
+      -ms-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+    }
+    a:hover {
+      color: rgba(0, 0, 0, 0.4);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    }
 </style> 
 <title>CS 284a: Final Project Proposal</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -15,9 +53,9 @@
 </head>
 <body>
 <br />
-
+<center>
 <h1>CS 284a: Final Project Proposal</h1>
-
+</center>
 <h2>Title</h2>
 <p>Filling Holes in Point Clouds with GANs</p>
 
@@ -43,16 +81,38 @@ Point clouds have become increasingly popular data structures for representing 3
 <h2>Goals and Deliverables</h2>
 
 <h3>What We Plan to Deliver</h3>
+<p>
+  We plan to create a program that accepts as input point cloud data and outputs a complete mesh. The point cloud data will be missing 
+  a chunk of the desired object, but the resulting mesh should have this filled in.
+</p>
 
 <h4>What images will we create?</h4>
+<p>
+  Our results will be images with the complete mesh compared to the original point cloud. In this comparison, we will highlight how the 
+  initial data lacked a significant part of the object and that our program was able to create the mesh successfully.
+</p>
 
 <h4>How will we measure the success of our system?</h4>
+<p>
+  Our success metric is very simple: either the mesh is complete or it is not. We will evaluate our performance using the binary metric, 
+  and intentionally choose input data where the desired result is obvious. For example, we will test on a chair that has legs missing, or 
+  a bottle with a missing top.
+</p>
 
 <h4>What questions will our analysis answer?</h4>
+<p>
+  Our analysis will explain why existing mesh generation methods fail in this edge case, and describe how we use GANs to successfully
+  resolve this problem. We will connect our results with other papers that have worked in a similar space, and describe how the methods 
+  could be combined to create a stronger meth generation tool.
+</p>
 
 <h3>What We Hope to Deliver</h3>
 
 <h4>Areas to go further...</h4>
+<p>
+  If time permits, we will expand our project to handle more objects by peroforming a more comprehensive training of our model. In an ideal 
+  mesh generation tool, we would be able to fill in missing chunks of objects even if those objects differ significantly from the training set.
+</p>
 
 <h2>Schedule</h2>
 
@@ -102,9 +162,17 @@ Point clouds have become increasingly popular data structures for representing 3
 </table>
 
 <h2>Resources</h2>
+There have been related work in this field. Mehdi Mirza et al. proposed <a href="https://arxiv.org/pdf/1411.1784.pdf">Conditional GANs </a>, which are GANs that are conditioned on a specific input instead of just a Gaussian noise vector. Since we're filling in holes of an existing point cloud, this will be very important. For latent representation of point clouds, we'll be referring to <a href="https://arxiv.org/abs/1707.02392">work</a> by Achlioptas et. al. Other related work include <a href="https://arxiv.org/abs/1804.07723">work </a> on filling in holes in 2D images (inpainting), and non-deep <a href="https://www.researchgate.net/publication/221403700_Filling_Holes_in_Point_Clouds">methods </a> for filling in missing chunks in point clouds. 
 
-<a href="https://arxiv.org/pdf/1810.05795.pdf?fbclid=IwAR2CqAciKhIEmGoPHQYNksGUsyX54ArPPzOyy8urY2kHA6sPIAtP2rTs68w">Point Cloud GAN</a>
+<br>
+For the point cloud dataset, we'll take meshes from <a href="https://www.shapenet.org/">Shapenet </a> and convert them to point clouds. 
+<br>
+
+We will be using Numpy arrays to represent the point clouds, and Tensorflow to construct the Generative Adversarial Network. In order to train the GAN, we'll most likely be using AWS or OCF (if available). We may be starting off with https://github.com/optas/latent_3d_points to learn a latent representation of the point clouds, but will be modifying it in order to fit our new problem statement. 
+
+
+<!-- <a href="https://arxiv.org/pdf/1810.05795.pdf?fbclid=IwAR2CqAciKhIEmGoPHQYNksGUsyX54ArPPzOyy8urY2kHA6sPIAtP2rTs68w">Point Cloud GAN</a>
 <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.researchgate.net%2Fpublication%2F221403700_Filling_Holes_in_Point_Clouds%3Ffbclid%3DIwAR2tQjXOpIkfp1DC9Ot5X4UgVZLWWovCe_WIpjdAg6dlR4hTP6GISMkHDgI&h=AT2MCu3jjvZFtnITcYAhBpMqFOxdxKUbs54lHlrL20Zvi9lVd3ZiepoL4WXHTKMy_ZSlcB-NSJOs-M2NjdslfnOwDDWtOKZ72DHDnsizeA5HCrhgSqdmeRlHDOURhX9jyYaKAsW4YNmF6Eg8dvsPEDGi">Filling Holes in Point Clouds</a>
-<a href="/">2D Image Reconstruction using GANs</a>
+<a href="/">2D Image Reconstruction using GANs</a> -->
 
 </body>
