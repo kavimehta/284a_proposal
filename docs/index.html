@@ -51,16 +51,38 @@
 <h2>Goals and Deliverables</h2>
 
 <h3>What We Plan to Deliver</h3>
+<p>
+  We plan to create a program that accepts as input point cloud data and outputs a complete mesh. The point cloud data will be missing 
+  a chunk of the desired object, but the resulting mesh should have this filled in.
+</p>
 
 <h4>What images will we create?</h4>
+<p>
+  Our results will be images with the complete mesh compared to the original point cloud. In this comparison, we will highlight how the 
+  initial data lacked a significant part of the object and that our program was able to create the mesh successfully.
+</p>
 
 <h4>How will we measure the success of our system?</h4>
+<p>
+  Our success metric is very simple: either the mesh is complete or it is not. We will evaluate our performance using the binary metric, 
+  and intentionally choose input data where the desired result is obvious. For example, we will test on a chair that has legs missing, or 
+  a bottle with a missing top.
+</p>
 
 <h4>What questions will our analysis answer?</h4>
+<p>
+  Our analysis will explain why existing mesh generation methods fail in this edge case, and describe how we use GANs to successfully
+  resolve this problem. We will connect our results with other papers that have worked in a similar space, and describe how the methods 
+  could be combined to create a stronger meth generation tool.
+</p>
 
 <h3>What We Hope to Deliver</h3>
 
 <h4>Areas to go further...</h4>
+<p>
+  If time permits, we will expand our project to handle more objects by peroforming a more comprehensive training of our model. In an ideal 
+  mesh generation tool, we would be able to fill in missing chunks of objects even if those objects differ significantly from the training set.
+</p>
 
 <h2>Schedule</h2>
 
